@@ -3,11 +3,11 @@ import { NavLink } from "react-router-dom";
 import styled from "styled-components";
 import { FiShoppingCart } from "react-icons/fi";
 import { CgMenu, CgClose } from "react-icons/cg";
+import { useCartContext } from "../context/cart_context";
+import { useAuth0 } from "@auth0/auth0-react";
+import { Button } from "../styles/Button";
 
-export default function NavBar(){
-  const [menuIcon, setMenuIcon] = useState();
-
-  const Nav = styled.nav`
+const Navbar = styled.nav`
   .navbar-lists {
     display: flex;
     gap: 4.8rem;
@@ -79,6 +79,11 @@ export default function NavBar(){
     font-size: 1.4rem;
     padding: 0.8rem 1.4rem;
   }
+ .pro-Img{
+border-radius: 50%;
+height: 60px;
+}
+
 
   @media (max-width: ${({ theme }) => theme.media.mobile}) {
     .mobile-navbar-btn {
@@ -160,9 +165,14 @@ export default function NavBar(){
     }
   }
 `;
+const Nav =()=> {
+  const [menuIcon, setMenuIcon] = useState();
+  const { total_item } = useCartContext();
+  const { loginWithRedirect, logout, isAuthenticated, user } = useAuth0();
+
 
   return (
-    <Nav>
+    <Navbar>
       <div className={menuIcon ? "navbar active" : "navbar"}>
         <ul className="navbar-lists">
           <li>
@@ -197,12 +207,30 @@ export default function NavBar(){
               Contact
             </NavLink>
           </li>
+
+          {/* {isAuthenticated && <p>{user.name}</p>} */}
+
+          {isAuthenticated ? (
+            <li>
+              <Button
+                onClick={() => logout({ returnTo: window.location.origin })}>
+                Log Out
+              </Button>
+            </li>
+          ) : (
+            <li>
+              <Button onClick={() => loginWithRedirect()}>Log In</Button>
+            </li>
+          )}
+
           <li>
             <NavLink to="/cart" className="navbar-link cart-trolley--link">
               <FiShoppingCart className="cart-trolley" />
-              <span className="cart-total--item"> 10 </span>
+              <span className="cart-total--item"> {total_item} </span>
             </NavLink>
           </li>
+
+          {isAuthenticated && (<img className="pro-Img" src ={user.picture} alt={user.name}></img>)}
         </ul>
 
         {/* two button for open and close of menu */}
@@ -219,7 +247,8 @@ export default function NavBar(){
           />
         </div>
       </div>
-    </Nav>
+    </Navbar>
   );
 };
 
+export default Nav;

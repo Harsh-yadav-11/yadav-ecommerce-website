@@ -19,8 +19,7 @@ export default function Footer() {
               </Button>
             </div>
           </div>
-        </section>
-       
+        </section>    
 
         <footer>
           <div className="container grid grid-four-column">
@@ -42,7 +41,8 @@ export default function Footer() {
                 <div>
                 <a
                     href="https://github.com/Harsh-yadav-11"
-                    target="_blank">
+                    target="_blank"
+                    rel="noreferrer">
                     <FaGithub className="icons" />
                   </a>
                 </div>
@@ -52,8 +52,10 @@ export default function Footer() {
                 <div>
                   <a
                     href="https://www.linkedin.com/in/harsh-yadav11?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3BJSqTy0MwQKOQVfeuktM35A%3D%3D"
-                    target="_blank">
-                    <FaLinkedin className="icons" />
+                    target="_blank"
+                    rel="noreferrer">
+                      
+                    <FaLinkedin className="icons" /> 
                   </a>
                 </div>
               </div>

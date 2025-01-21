@@ -100,6 +100,7 @@ ${"" /* resuable code section  */}
 
 .grid-three-column {
   grid-template-columns: repeat(3, 1fr);
+  
 }
 
 .grid-four-column{

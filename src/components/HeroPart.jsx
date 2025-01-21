@@ -25,7 +25,7 @@ export default function HeroPart({heading}) {
       </div>
       <div className='hero-section-image'>
          <figure>
-          <img src="images/hero.jpg" alt="hero-section-photo" className='img-style' />
+          <img src="images/hero.jpg" alt="hero-pic" className='img-style' />
          </figure>
       </div>
      </div>

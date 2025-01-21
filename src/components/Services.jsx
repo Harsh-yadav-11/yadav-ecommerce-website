@@ -27,10 +27,10 @@ export default function Services() {
                 </div>
                 <div className="services-3">
                     <div>
-                    <RiSecurePaymentLine className="icon" />
-                    <h3>Super Fast and Free Delivery</h3>
+                    <RiSecurePaymentLine className="icon"/>
+                    <h3>Security Payment</h3>
                     </div>
-                </div>
+                </div> 
             </div>
         </div>
     </Wrapper>
